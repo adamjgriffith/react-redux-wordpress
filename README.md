@@ -1,4 +1,5 @@
 
+
 # React Redux WordPress (RRW)
 
 This project template was built with [Create React App](https://github.com/facebookincubator/create-react-app), which provides a simple way to start React projects with no build configuration needed.
@@ -54,9 +55,36 @@ Update `API_ROOT` on line 19 of `/src/middleware/api.js` to your chosen WordPres
 ```
 const API_ROOT = 'https://demo.wp-api.org/wp-json/'
 ```
+### Changing homepage
+
+Update `props.match.params.postSlug`  on line 23 of `Root.js` to the correct slug for your homepage.
+
+```
+<Route exact path="/" render={props => {
+  props.match.params.postSlug = 'sample-page'
+  return <SinglePage {...props}/>
+}}/>
+```
+
+### Custom Page Templates
+
+Update `renderPost` in `/src/containers/ArchivePage.js` and `/src/containers/SinglePage.js` to include the components for your custom page template.
+
+```
+  renderPost(post) {
+    if (post.type === 'page') {
+      if (post.template === "") {
+        return <DefaultPageTemplate page={post} key={post.id} />
+      }
+    } else if (post.type === 'post') {
+      return <Post post={post} key={post.id} />
+    }
+  }
+  ```
+
 ### Custom Post Types
 
-Update `renderPost` in `/src/containers/ArchivePage.js` and `/src/containers/SinglePage.js`:
+Update `renderPost` in `/src/containers/ArchivePage.js` and `/src/containers/SinglePage.js` to include the components for your custom post type.
 
 ```
   renderPost(post) {
