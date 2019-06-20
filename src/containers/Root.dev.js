@@ -14,8 +14,6 @@ const Root = ({ store }) => (
       <Header />
       <main className="container p-5">
         <Switch>
-          <Route exact path="/category/:categorySlug" component={ArchivePage} />
-          <Route exact path="/tag/:tagSlug" component={ArchivePage} />
           <Route exact path="/:postType(pages|posts)/:postSlug" component={SinglePage} />
           <Route exact path="/:postType(pages|posts)" component={ArchivePage} />
           <Route exact path="/:postSlug" component={SinglePage} />

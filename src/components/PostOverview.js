@@ -6,11 +6,11 @@ const PostOverview = ({ post }) => {
   const { categories, date, featuredMedia, tags, title } = post
 
   const renderedCategories = categories.map((category) => {
-    return <Link className="badge badge-primary badge-pill mr-1" to={`/category/${category.slug}`} key={category.id}>{category.name}</Link>
+    return <span className="badge badge-primary badge-pill mr-1" key={category.id}>{category.name}</span>
   })
 
   const renderedTags = tags.map((tag) => {
-    return <Link className="badge badge-primary badge-pill mr-1" to={`/tag/${tag.slug}`} key={tag.id}>{tag.name}</Link>
+    return <span className="badge badge-primary badge-pill mr-1" key={tag.id}>{tag.name}</span>
   })
 
   return (
